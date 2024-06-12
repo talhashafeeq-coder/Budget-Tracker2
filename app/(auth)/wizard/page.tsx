@@ -26,8 +26,6 @@
 //   )
 // }
 
-
-
 // export default page
 import React from 'react'
 
@@ -38,6 +36,7 @@ function page() {
     </div>
   )
 }
+
 
 export default page
 
