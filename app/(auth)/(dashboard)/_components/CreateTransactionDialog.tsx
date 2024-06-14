@@ -83,10 +83,6 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                   <FormItem className="flex flex-col">
                     <FormLabel>Category</FormLabel>
                     <FormControl>
-                      {/* <CategoryPicker
-                        type={type}
-                        onChange={handleCategoryChange}
-                      /> */}
                     </FormControl>
                     <FormDescription>
                       Select a category for this transaction
