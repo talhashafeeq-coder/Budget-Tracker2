@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateTransactionSchema, CreateTransactionSchemaType } from "@/schema/transaction";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
+import CategoryPicker from "@/app/(auth)/(dashboard)/_components/CategoryPicker";
 interface Props {
     trigger: ReactNode;
     type: TransactionType;
@@ -25,7 +25,10 @@ function CreateTransactionDialog({ trigger, type }: Props) {
         },
     });
 
-
+    const onSubmit = (data: CreateTransactionSchemaType) => {
+        // Handle form submission here
+        console.log("Form data:", data);
+    };
 
     return (
         <Dialog>
@@ -43,54 +46,60 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                     </DialogTitle>
                 </DialogHeader>
                 <Form {...form}>
-          <form className="space-y-4" >
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Input defaultValue={""} {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Transaction description (optional)
-                  </FormDescription>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="amount"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Amount</FormLabel>
-                  <FormControl>
-                    <Input defaultValue={0} type="number" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Transaction amount (required)
-                  </FormDescription>
-                </FormItem>
-              )}
-            />
-
-            <div className="flex items-center justify-between gap-2">
-              <FormField
-                control={form.control}
-                name="category"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel>Category</FormLabel>
-                    <FormControl>
-                    </FormControl>
-                    <FormDescription>
-                      Select a category for this transaction
-                    </FormDescription>
-                  </FormItem>
-                )}
-              />
-              </div>
+                    <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+                        <FormField
+                            control={form.control}
+                            name="description"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Description</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Transaction description (optional)
+                                    </FormDescription>
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="amount"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Amount</FormLabel>
+                                    <FormControl>
+                                        <Input type="number" {...field} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Transaction amount (required)
+                                    </FormDescription>
+                                </FormItem>
+                            )}
+                        />
+                        <div className="flex items-center justify-between gap-2">
+                            <FormField
+                                control={form.control}
+                                name="category"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-col">
+                                        <FormLabel>Category</FormLabel>
+                                        <FormControl>
+                                            <CategoryPicker
+                                                type={type}
+                                                onChange={field.onChange}
+                                            />
+                                        </FormControl>
+                                        <FormDescription>
+                                            Select a category for this transaction
+                                        </FormDescription>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                            Submit
+                        </button>
                     </form>
                 </Form>
             </DialogContent>

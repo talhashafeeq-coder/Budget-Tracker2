@@ -89,7 +89,6 @@ export function CurrencyComboBox() {
       </SkeletonWrapper>
     );
   }
-
   return (
     <SkeletonWrapper isLoading={isFetching}>
       <Drawer open={open} onOpenChange={setOpen}>
@@ -111,7 +110,6 @@ export function CurrencyComboBox() {
     </SkeletonWrapper>
   );
 }
-
 function OptionList({
   setOpen,
   setSelectedOption,
