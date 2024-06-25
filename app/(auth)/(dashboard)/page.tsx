@@ -2,12 +2,25 @@ import { Button } from '@/components/ui/button';
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from "next/navigation";
 import CreateTransactionDialog from "@/app/(auth)/(dashboard)/_components/CreateTransactionDialog";
+import Overview from "@/app/(auth)/(dashboard)/_components/Overview";
+import prisma from "@/lib/prisma";
 import React from 'react'
 async function page() {
   const user = await currentUser();
   if (!user) {
     redirect("/sign-in");
   }
+  
+  const userSettings = await prisma.userSettings.findUnique({
+    where: {
+      userId: user.id,
+    },
+  });
+
+  if (!userSettings) {
+    redirect("/wizard");
+  }
+
   return (
     <div className="h-full bg-background">
     <div className="border-b bg-card">
@@ -39,6 +52,7 @@ async function page() {
         </div>
       </div>
     </div>
+    <Overview userSettings={userSettings} />
   </div>
   )
 }
