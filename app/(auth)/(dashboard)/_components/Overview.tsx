@@ -1,6 +1,6 @@
 "use client";
 
-// import CategoriesStats from "@/app/(auth)/(dashboard)/_components/CategoriesStats";
+import CategoriesStats from "@/app/(auth)/(dashboard)/_components/CategoriesStats";
 // import StatsCards from "@/app/(auth)/(dashboard)/_components/StatsCards";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { MAX_DATE_RANGE_DAYS } from "@/lib/constants";
@@ -49,11 +49,11 @@ function Overview({ userSettings }: { userSettings: UserSettings }) {
           to={dateRange.to}
         />
 
-        {/*<CategoriesStats
+        <CategoriesStats
           userSettings={userSettings}
           from={dateRange.from}
           to={dateRange.to}
-        /> */}
+        />
       </div>
     </>
   );

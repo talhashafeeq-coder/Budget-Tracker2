@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from "next/navigation";
 import CreateTransactionDialog from "@/app/(auth)/(dashboard)/_components/CreateTransactionDialog";
 import Overview from "@/app/(auth)/(dashboard)/_components/Overview";
+import History from "@/app/(auth)/(dashboard)/_components/History";
 import prisma from "@/lib/prisma";
 import React from 'react'
 async function page() {
@@ -53,6 +54,8 @@ async function page() {
       </div>
     </div>
     <Overview userSettings={userSettings} />
+    <History userSettings={userSettings} />
+
   </div>
   )
 }
