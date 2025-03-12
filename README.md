@@ -37,12 +37,20 @@ Other Utilities: Date-fns, Sonner, Export-to-CSV<br>
 ###🛠️ Installation & Setup
 
 1. Clone the repository:<br>
-https://github.com/talhashafeeq-coder/Budget-Tracker2.git <br>
-cd Budget-Tracker2<br>
+ ```sh
+https://github.com/talhashafeeq-coder/Budget-Tracker2.git 
+  ```
+ ```sh
+cd Budget-Tracker2<
+  ```
 2. Install dependencies:<br>
+```sh
  npm i
+  ```
 3. Run the project:<br>
-npm start <br>
+ ```sh
+npm start 
+  ```
 ### 🤝 Contributing<br>
 
 Feel free to submit pull requests or open issues for improvements!
